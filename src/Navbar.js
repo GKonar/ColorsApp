@@ -33,8 +33,6 @@ class Navbar extends Component {
   render() {
     const { level, changeLevel } = this.props;
     const { format } = this.state;
-
-    console.log(this.state.format);
     
     return (
       <header className="Navbar">
