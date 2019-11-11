@@ -23,6 +23,7 @@ class Navbar extends Component {
   }
 
   handleFormatChange(e) {
+    console.log(e.target);
     this.setState({format: e.target.value, open: true});
     this.props.handleChange(e.target.value);
   }
