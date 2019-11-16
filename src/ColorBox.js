@@ -17,7 +17,7 @@ const styles = {
     position: "relative",
     display: "inline-block",
     "&:hover button": {
-      opacity: 1
+      opacity: "1"
     }
   },
   copyText: {
