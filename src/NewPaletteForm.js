@@ -82,8 +82,9 @@ class NewPaletteForm extends Component {
     this.state = {
       open: true,
       currentColor: "teal",
-      newName: '',
+      newColorName: '',
       colors: [{ color: "blue", name: "blue" }],
+      newPaletteName: ''
     };
 
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
@@ -119,16 +120,21 @@ class NewPaletteForm extends Component {
   }
 
   addNewColor() {
-    const newColor = { color: this.state.currentColor, name: this.state.newName }
-    this.setState({colors: [...this.state.colors, newColor], newName: ''});
+    const newColor = { 
+      color: this.state.currentColor, 
+      name: this.state.newColorName 
+    };
+    this.setState({colors: [...this.state.colors, newColor], newColorName: ''});
   }
 
   handleChange(e) {
-    this.setState({ newName: e.target.value})
+    this.setState({ 
+      [e.target.name]: e.target.value
+    })
   }
 
   handleSubmit() {
-    let newName = "New Test Palette"
+    let newName = this.state.newPaletteName;
     const newPalette = {
       paletteName: newName,
       id: newName.toLowerCase().replace(/ /g, '-'),
