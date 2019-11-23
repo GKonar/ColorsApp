@@ -1,8 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { all } from 'q';
-import { transform } from '@babel/core';
 import { SortableElement } from 'react-sortable-hoc';
 
 const styles = {
@@ -10,7 +8,7 @@ const styles = {
     width: "20%",
     height:  "25%",
     margin: "0 auto",
-    marginBottom: "-3.5px",
+    marginBottom: "-5.5px", // ?
     cursor: "pointer",
     position: "relative",
     display: "inline-block",
