@@ -78,6 +78,10 @@ const styles = theme => ({
 });
 
 class NewPaletteForm extends Component {
+  static defaultProps = {
+    maxColors: 20
+  }
+
   constructor(props) {
     super(props);
 
@@ -180,8 +184,9 @@ class NewPaletteForm extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { open } = this.state;
+    const { classes, maxColors } = this.props;
+    const { open, colors } = this.state;
+    const paletteFull = colors.length >= maxColors;
 
     return (
       <div className={classes.root}>
@@ -250,7 +255,9 @@ class NewPaletteForm extends Component {
             <Button 
               variant="contained" 
               color="primary"
-              onClick={this.addRandomColor}>
+              onClick={this.addRandomColor}
+              disabled={paletteFull}
+              >
               Random Color
             </Button>
           </div>
@@ -270,9 +277,10 @@ class NewPaletteForm extends Component {
               variant="contained" 
               type='submit'
               color="primary" 
-              style={{backgroundColor: this.state.currentColor}}
+              style={{backgroundColor: paletteFull ? 'grey' : this.state.currentColor}}
+              disabled={ paletteFull }
             >
-              Add Color
+              {paletteFull ? 'Palette Full' : 'Add Color'}
             </Button>
           </ValidatorForm>
         </Drawer>
@@ -283,7 +291,7 @@ class NewPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
             <DraggableColorList 
-              colors={this.state.colors} 
+              colors={colors} 
               removeColor={this.removeColor}
               axis="xy"
               onSortEnd={this.onSortEnd}/>
