@@ -118,7 +118,7 @@ class PaletteFormNav extends Component {
                     Go Back
                 </Button>
               </Link>
-          </div>
+            </div>
         </AppBar>
       </div>
     )
