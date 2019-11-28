@@ -3,11 +3,12 @@ export default {
     backgroundColor: "white",
     borderRadius: "5px",
     padding: "0.5rem",
-    positon: "relative",
+    position: "relative",
     overflow: "hidden",
     border: "1px solid black",
-    "&:hover": {
-      cursor: "pointer"
+    cursor: "pointer",
+    "&:hover $deleteIcon": {
+      opacity: "1"
     }
   },
   colors: {
@@ -37,6 +38,22 @@ export default {
     display: "inline-block",
     margin: "0 auto",
     position: "relative",
-    marginBottom: "-3px"
+    marginBottom: "-3px",
+  },
+  delete: {
+    
+  },
+  deleteIcon: {
+    color: "white",
+    backgroundColor: "#eb3d30",
+    width: '20px', 
+    height: '20px',
+    position: "absolute",
+    right: "0px",
+    top: "0px",
+    zIndex: "10",
+    padding: "10px",
+    opacity: "0",
+    transition: '.3s'
   }
 };
