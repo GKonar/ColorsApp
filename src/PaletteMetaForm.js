@@ -47,12 +47,13 @@ class PaletteMetaForm extends Component {
   }
 
   render() {
-    const { newPaletteName } = this.state;
+    const { newPaletteName, open } = this.state;
+    const { hideForm, handleSubmit } = this.props;
 
     return (
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={open}
+          onClose={hideForm}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Choose A Palette Name</DialogTitle>
@@ -64,7 +65,7 @@ class PaletteMetaForm extends Component {
               <Picker />
                 <TextValidator 
                 name='newPaletteName'
-                value={this.state.newPaletteName}
+                value={newPaletteName}
                 label='Palette Name'
                 onChange={this.handleChange}
                 fullWidth
@@ -74,7 +75,7 @@ class PaletteMetaForm extends Component {
                 />
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose} color="primary">
+              <Button onClick={hideForm} color="primary">
                 Cancel
               </Button>
               <Button 
