@@ -15,13 +15,15 @@ class PaletteMetaForm extends Component {
     super(props)
 
     this.state = {
-      open: true,
+      stage: "form",
       newPaletteName: ''
     };
 
     this.handleClickOpen = this.handleClickOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.showEmojiPicker = this.showEmojiPicker.bind(this);
+    this.savePalette = this.savePalette.bind(this);
   }
 
   handleClickOpen = () => {
@@ -37,6 +39,19 @@ class PaletteMetaForm extends Component {
       [e.target.name]: e.target.value
     })
   }
+ 
+  showEmojiPicker() {
+    this.setState({ stage: "emoji" });
+  }
+
+  savePalette(emoji) {
+    console.log(emoji.native);
+    const newPalette = {
+      paletteName: this.state.newPaletteName, 
+      emoji: emoji.native
+    };
+    this.props.handleSubmit(newPalette);
+  }
 
   componentDidMount() {
     ValidatorForm.addValidationRule("isPaletteNameUnique", value => 
@@ -47,22 +62,27 @@ class PaletteMetaForm extends Component {
   }
 
   render() {
-    const { newPaletteName, open } = this.state;
-    const { hideForm, handleSubmit } = this.props;
+    const { newPaletteName } = this.state;
+    const { hideForm } = this.props;
 
     return (
+      <div>
+        <Dialog open={this.state.stage === "emoji"} onClose={hideForm}>
+          <DialogTitle id="form-dialog-title">Pick Emoji For Your Palette</DialogTitle>
+          <Picker onSelect={this.savePalette}/>
+        </Dialog>
         <Dialog
-          open={open}
+          open={this.state.stage === "form"}
           onClose={hideForm}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Choose A Palette Name</DialogTitle>
-          <ValidatorForm onSubmit={() => this.props.handleSubmit(newPaletteName)}>
+          <ValidatorForm onSubmit={this.showEmojiPicker}>
+            
             <DialogContent>
               <DialogContentText>
                 Please enter a name for Your new Palette. It has to be unique !
               </DialogContentText>
-              <Picker />
                 <TextValidator 
                 name='newPaletteName'
                 value={newPaletteName}
