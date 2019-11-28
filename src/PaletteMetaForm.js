@@ -74,6 +74,7 @@ class PaletteMetaForm extends Component {
                 errorMessages={['Enter Palette Name !', 'Name already taken']}
                 />
             </DialogContent>
+
             <DialogActions>
               <Button onClick={hideForm} color="primary">
                 Cancel
@@ -87,6 +88,7 @@ class PaletteMetaForm extends Component {
             </DialogActions>
           </ValidatorForm>
         </Dialog>
+      </div>
     );
   }
 }
