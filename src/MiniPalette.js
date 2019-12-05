@@ -8,12 +8,12 @@ class MiniPalette extends Component {
   constructor(props) {
     super(props);
 
-    this.deletePalete = this.deletePalete.bind(this);
+    this.deletePalette = this.deletePalette.bind(this);
   }
 
-  deletePalete(e) {
+  deletePalette(e) {
     e.stopPropagation()
-    this.props.handleDelete(this.props.id)
+    this.props.openDialog(this.props.id)
   }
 
   render() {
@@ -29,7 +29,7 @@ class MiniPalette extends Component {
       <div className={classes.root} onClick={handleClick}>
           <DeleteIcon 
             className={classes.deleteIcon}
-            onClick={this.deletePalete}/>
+            onClick={this.deletePalette}/>
         <div className={classes.colors}>
           { miniColorBoxes }
         </div>
