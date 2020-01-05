@@ -1,4 +1,4 @@
-import { DRAWER_WIDTH } from '../constans';
+import { DRAWER_WIDTH } from './constans';
 import sizes from './sizes';
 
 const styles = (theme) => ({

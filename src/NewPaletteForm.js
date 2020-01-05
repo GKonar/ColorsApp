@@ -14,7 +14,7 @@ import { arrayMove } from 'react-sortable-hoc';
 
 import styles from './styles/NewPaletteFormStyles'
 
-import seedColors from './seedColors';
+import seedColors from './helpers/seedColors';
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -81,7 +81,6 @@ class NewPaletteForm extends Component {
 
   addRandomColor() {
     const allColors = this.props.palettes.map(p => p.colors).flat();
-    let rand;
     let randomColor;
     let isDuplicateColor = true;
     while(isDuplicateColor) {

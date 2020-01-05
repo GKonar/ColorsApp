@@ -8,8 +8,8 @@ import SingleColorPalette from './SingleColorPalette';
 import NewPaletteForm from './NewPaletteForm';
 import Page from './Page';
 
-import seedColors from './seedColors';
-import { generatePalette } from './colorHelpers';
+import seedColors from './helpers/seedColors';
+import { generatePalette } from './helpers/colorHelpers';
 
 class App extends Component {
   constructor(props) {
